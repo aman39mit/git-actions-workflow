@@ -11,13 +11,13 @@ on:
       inputs:
         int1:
           description: 'Enter first no'  
-          default: 22   
+          default: 9   
           required: true
     
         int2:
           description: 'Enter second no'  
-          default: 44   
-          required: true
+          default: 11   
+          required: false
 env:
   a: ${{github.event.inputs.int1}}
   b: ${{github.event.inputs.int2}}
@@ -73,7 +73,7 @@ jobs:
         with:
           python-version: '3.10' 
      
-      - run: python pythonfiles/functions.py 600
+      - run: python pythonfiles/functions.py 52
   job4:
     runs-on: windows-latest
     steps:

@@ -1,12 +1,10 @@
 import sys, math
 
-def prime(a):
-    sqtofA = int(math.sqrt(a))
-    for i in range(1, sqtofA):
-        if a%i == 0:
-            return False
+def oddEve(a):
+    if(a%2==0):
+        return True
+    else:
+        return False
     
-    return True
-    
-pn = int(sys.argv[1])
-print(prime(pn))
+pn = int(sys.argv[1]) #taking command line input
+print(oddEve(pn))
