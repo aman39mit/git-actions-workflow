@@ -1,6 +1,4 @@
-
-
-name: Aman Mittal
+name: Aman mittal
 
 # Controls when the workflow will run
 on:
@@ -9,9 +7,25 @@ on:
     branches: [ "master" ]
   pull_request:
     branches: [ "master" ]
+  workflow_dispatch:
+      inputs:
+        int1:
+          description: 'Enter first no'  
+          default: 22   
+          required: true
+    
+        int2:
+          description: 'Enter second no'  
+          default: 44   
+          required: true
+env:
+  a: ${{github.event.inputs.int1}}
+  b: ${{github.event.inputs.int2}}
+
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
+
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -27,7 +41,7 @@ jobs:
       - uses: actions/setup-python@v4
         with:
           python-version: '3.10' 
-      - run: python python.py
+      - run: python pythonfiles/python.py
 
       # Runs a single command using the runners shell
       - name: Run a one-line script
@@ -49,6 +63,26 @@ jobs:
       - uses: actions/setup-python@v4
         with:
           python-version: '3.10' 
-      - run: python python2.py
-
+      - run: python pythonfiles/python2.py
+#command line input
+  job3:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.10' 
+     
+      - run: python pythonfiles/functions.py 600
+  job4:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.10' 
+     
+      - run: |
+          echo "$a $b"
+        
 
